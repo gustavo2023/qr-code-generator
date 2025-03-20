@@ -23,8 +23,23 @@
     />
   </head>
   <body>
-    <main></main>
-    
+    <main>
+      <div class="logo-container">
+        <picture>
+          <source srcset="./resources/Logo.svg" media="(min-width: 48rem)" />
+          <source
+            srcset="./resources/Logo-small.svg"
+            media="(max-width: 47.9rem)"
+          />
+          <img src="./resources/Logo.svg" alt="Logo" />
+        </picture>
+      </div>
+      <div class="input-button-box">
+        <input type="text" id="input" placeholder="Enter an url" />
+        <button id="generate-qr-btn">QR code</button>
+      </div>
+    </main>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="script.js"></script>
   </body>
