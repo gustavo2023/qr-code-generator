@@ -108,3 +108,9 @@ main {
   align-items: center;
   padding: 1rem;
 }
+
+@media (min-width: 48rem) {
+  body {
+    background: url("./resources/qa-bg.jpg") no-repeat center center/cover;
+  }
+}
