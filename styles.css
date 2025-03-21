@@ -114,15 +114,11 @@ main {
   gap: 1rem;
 }
 
-a {
-  text-decoration: none;
-}
-
-.download-btn {
+.buttons-container .download-btn,
+.buttons-container .share-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10.6rem;
   background-color: var(--button-color);
   color: var(--text-color);
   padding: 0.8rem;
@@ -130,6 +126,18 @@ a {
   border: none;
   border-radius: 0.7rem;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.download-btn {
+  width: 10.6rem;
+}
+
+.share-btn {
+  width: 8.6rem;
 }
 
 @media (min-width: 48rem) {
