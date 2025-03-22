@@ -17,6 +17,15 @@ const generateQrCode = () => {
   btnsContainer.style.display = "flex";
   qrCodeContainer.style.display = "flex";
   qrCode.makeCode(urlInput.value);
+
+  setTimeout(() => {
+    const qrCanvas = qrCodeContainer.querySelector("canvas");
+    if (qrCanvas) {
+      const qrImage = qrCanvas.toDataURL("image/png"); // Get the QR code as a Base64 image
+      downloadBtn.href = qrImage;
+      downloadBtn.download = "qr-code.png";
+    }
+  }, 100);
 };
 
 generateQrBtn.addEventListener("click", generateQrCode);
