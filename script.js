@@ -36,20 +36,17 @@ const generateQrCode = () => {
   }, 100);
 };
 
-const copyQrCodeToClipboard = () => {
+const copyQrCodeToClipboard = async () => {
   const qrImage = getQrCodeImage();
   if (qrImage) {
-    // Create a temporary input element to hold the Base64 string
-    const tempInput = document.createElement("textarea");
-    tempInput.value = qrImage;
-    document.body.appendChild(tempInput);
-
-    tempInput.select();
-    document.execCommand("copy");
-
-    document.body.removeChild(tempInput);
-
-    alert("QR code copied to clipboard!");
+    try {
+      // Use the Clipboard API to write the Base64 string to the clipboard
+      await navigator.clipboard.writeText(qrImage);
+      alert("QR code copied to clipboard!");
+    } catch (err) {
+      console.error("Failed to copy QR code: ", err);
+      alert("Failed to copy QR code to clipboard.");
+    }
   } else {
     alert("No QR code available to copy.");
   }
