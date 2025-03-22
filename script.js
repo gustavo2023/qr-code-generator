@@ -12,6 +12,15 @@ const qrCode = new QRCode(qrCodeContainer, {
   text: urlInput.value,
 });
 
+// Function to get the QR code as a Base64 image
+const getQrCodeImage = () => {
+  const qrCanvas = qrCodeContainer.querySelector("canvas");
+  if (qrCanvas) {
+    return qrCanvas.toDataURL("image/png"); // Convert the canvas to a Base64 image
+  }
+  return null;
+};
+
 const generateQrCode = () => {
   inputContainer.style.display = "none";
   btnsContainer.style.display = "flex";
@@ -19,9 +28,8 @@ const generateQrCode = () => {
   qrCode.makeCode(urlInput.value);
 
   setTimeout(() => {
-    const qrCanvas = qrCodeContainer.querySelector("canvas");
-    if (qrCanvas) {
-      const qrImage = qrCanvas.toDataURL("image/png"); // Get the QR code as a Base64 image
+    const qrImage = getQrCodeImage();
+    if (qrImage) {
       downloadBtn.href = qrImage;
       downloadBtn.download = "qr-code.png";
     }
@@ -29,24 +37,18 @@ const generateQrCode = () => {
 };
 
 const copyQrCodeToClipboard = () => {
-  const qrCanvas = qrCodeContainer.querySelector("canvas");
-  if (qrCanvas) {
-    // Convert the canvas to a Base64 image
-    const qrImage = qrCanvas.toDataURL("image/png");
-
+  const qrImage = getQrCodeImage();
+  if (qrImage) {
     // Create a temporary input element to hold the Base64 string
     const tempInput = document.createElement("textarea");
-    tempInput.value = qrImage; // Set the Base64 string as the value
-    document.body.appendChild(tempInput); // Append the input to the DOM
+    tempInput.value = qrImage;
+    document.body.appendChild(tempInput);
 
-    // Select the text and execute the copy command
     tempInput.select();
     document.execCommand("copy");
 
-    // Remove the temporary input element
     document.body.removeChild(tempInput);
 
-    // Optional: Provide feedback to the user
     alert("QR code copied to clipboard!");
   } else {
     alert("No QR code available to copy.");
