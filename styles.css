@@ -114,8 +114,8 @@ main {
   gap: 1rem;
 }
 
-.buttons-container .download-btn,
-.buttons-container .share-btn {
+button,
+a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,8 +140,41 @@ a {
   width: 8.6rem;
 }
 
+.input-button-box {
+  width: 70%;
+  border: 1px solid var(--button-color);
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--input-color);
+}
+
+input {
+  border: none;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--text-color);
+}
+
+.generate-qr-btn {
+  width: 8.6rem;
+}
+
 @media (min-width: 48rem) {
   body {
     background: url("./resources/qa-bg.jpg") no-repeat center center/cover;
+  }
+
+  .input-button-box {
+    width: 50%;
   }
 }
