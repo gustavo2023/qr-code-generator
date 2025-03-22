@@ -28,4 +28,30 @@ const generateQrCode = () => {
   }, 100);
 };
 
+const copyQrCodeToClipboard = () => {
+  const qrCanvas = qrCodeContainer.querySelector("canvas");
+  if (qrCanvas) {
+    // Convert the canvas to a Base64 image
+    const qrImage = qrCanvas.toDataURL("image/png");
+
+    // Create a temporary input element to hold the Base64 string
+    const tempInput = document.createElement("textarea");
+    tempInput.value = qrImage; // Set the Base64 string as the value
+    document.body.appendChild(tempInput); // Append the input to the DOM
+
+    // Select the text and execute the copy command
+    tempInput.select();
+    document.execCommand("copy");
+
+    // Remove the temporary input element
+    document.body.removeChild(tempInput);
+
+    // Optional: Provide feedback to the user
+    alert("QR code copied to clipboard!");
+  } else {
+    alert("No QR code available to copy.");
+  }
+};
+
 generateQrBtn.addEventListener("click", generateQrCode);
+shareBtn.addEventListener("click", copyQrCodeToClipboard);
