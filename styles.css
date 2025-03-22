@@ -109,8 +109,12 @@ main {
   padding: 1rem;
 }
 
+.logo-container {
+  margin-bottom: 2rem;
+}
+
 .buttons-container {
-  display: flex;
+  display: none;
   gap: 1rem;
 }
 
@@ -141,9 +145,9 @@ a {
 }
 
 .input-button-box {
-  width: 70%;
+  width: 100%;
   border: 1px solid var(--button-color);
-  border-radius: 0.7rem;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -163,6 +167,10 @@ input {
 
 input::placeholder {
   color: var(--text-color);
+}
+
+input:focus {
+  outline: none;
 }
 
 .generate-qr-btn {
