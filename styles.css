@@ -91,6 +91,7 @@ textarea:not([rows]) {
   --input-color: #030616;
   --button-color: #263fa9;
   --text-color: #f2f5f9;
+  --qr-code-color: #f2f5fa;
 }
 
 body {
@@ -111,6 +112,14 @@ main {
 
 .logo-container {
   margin-bottom: 2rem;
+}
+
+.qr-code {
+  display: none;
+  margin: 5rem 0;
+  background-color: var(--qr-code-color);
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
 
 .buttons-container {
